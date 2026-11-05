@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les nombres relatifs – Cours et révisions</title>
+<style>
+:root{--paper:#fcfbf3;--grid:#d3e3f3;--ink:#1f3a6e;--text:#2b2f3a;--red:#c8453b;--yellow:#fff0a0;--green:#2f8a5b;--orange:#e98a2b;--blue:#2d6cb5;--soft:#eef5fc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font:18px/1.65 Georgia,"Times New Roman",serif;background-color:var(--paper);
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+.page{max-width:960px;margin:0 auto;background:rgba(252,251,243,.93);min-height:100vh;border-left:3px solid #e9a6a0;border-right:1px solid var(--grid);padding:0 clamp(16px,4vw,44px) 40px}
+header{text-align:center;padding:24px 0 10px}
+header img{display:block;margin:0 auto;max-width:100%;height:auto;width:360px}
+h1{font:800 clamp(26px,5vw,40px)/1.15 "Trebuchet MS",Verdana,sans-serif;color:var(--ink);margin:18px 0 6px}
+.meta{font:15px "Trebuchet MS",sans-serif;color:#566;margin:0}
+.meta b{color:var(--red)}
+.tag{display:inline-block;background:var(--yellow);padding:2px 12px;border-radius:4px;font:14px "Trebuchet MS",sans-serif;margin-top:10px}
+nav{display:flex;gap:12px;justify-content:center;margin:22px 0;flex-wrap:wrap;position:sticky;top:0;padding:10px 0;background:rgba(252,251,243,.96);z-index:5}
+nav button{font:700 17px "Trebuchet MS",sans-serif;padding:12px 26px;border:3px solid var(--ink);background:#fff;color:var(--ink);border-radius:10px 10px 0 0;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+nav button[aria-selected=true]{background:var(--ink);color:#fff}
+button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.tab{display:none}.tab.on{display:block}
+h2{font:800 25px "Trebuchet MS",sans-serif;color:#fff;background:var(--blue);margin:38px -10px 14px;padding:8px 18px;border-radius:0 24px 24px 0;display:flex;gap:12px;align-items:center}
+h2 span{background:var(--yellow);color:var(--ink);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-size:18px;flex:none}
+h3{font:700 19px "Trebuchet MS",sans-serif;color:var(--ink);margin:20px 0 4px;border-bottom:2px dotted var(--blue)}
+.box{border-left:8px solid var(--c);background:#fff;padding:12px 18px 12px 16px;margin:14px 0;border-radius:0 10px 10px 0;box-shadow:2px 2px 0 rgba(31,58,110,.15)}
+.box>b:first-child{display:block;font:700 14px "Trebuchet MS",sans-serif;color:var(--c);margin-bottom:2px}
+.def{--c:var(--blue)}.ex{--c:var(--green)}.att{--c:var(--red)}.ret{--c:var(--orange);background:#fff8e6}
+.box p{margin:4px 0}.box ul{margin:4px 0;padding-left:22px}
+mark{background:var(--yellow);padding:0 3px}
+code,.m{font-family:"Courier New",monospace;background:var(--soft);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.line{display:flex;margin:18px 0 8px;border-top:4px solid var(--ink);position:relative;overflow-x:auto}
+.line i{flex:1;min-width:46px;text-align:center;font:700 15px "Trebuchet MS",sans-serif;font-style:normal;padding-top:6px;border-left:2px solid var(--ink);margin-top:-10px;padding-top:12px}
+.line i:last-child{border-right:2px solid var(--ink)}
+.line .o{color:#fff;background:var(--red);border-radius:0 0 8px 8px}
+.neg{color:var(--red)}.pos{color:var(--blue)}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;margin:10px 0}
+th,td{border:2px solid var(--ink);padding:6px 10px;text-align:left}
+th{background:var(--ink);color:#fff;font-family:"Trebuchet MS",sans-serif}
+.wrap{overflow-x:auto}
+/* révision */
+.bar{position:sticky;top:64px;z-index:4;background:#fff;border:3px solid var(--ink);border-radius:12px;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font:700 16px "Trebuchet MS",sans-serif;color:var(--ink)}
+.prog{flex:1;min-width:120px;height:12px;background:var(--soft);border-radius:8px;overflow:hidden;border:1px solid var(--ink)}
+.prog div{height:100%;width:0;background:var(--green);transition:width .4s}
+.q{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:14px 18px;margin:14px 0;box-shadow:3px 3px 0 rgba(31,58,110,.25)}
+.q.ok{border-color:var(--green);background:#f1fbf5}.q.ko{border-color:var(--red);background:#fff4f2}
+.q .n{font:700 14px "Trebuchet MS",sans-serif;color:var(--blue)}
+.q p{margin:4px 0 10px;font-size:19px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt,.act{font:600 16px "Trebuchet MS",sans-serif;padding:8px 16px;border-radius:8px;border:2px solid var(--blue);background:#fff;color:var(--ink);cursor:pointer}
+.opt[aria-pressed=true]{background:var(--blue);color:#fff}
+.act{background:var(--ink);color:#fff;border-color:var(--ink)}.act.alt{background:#fff;color:var(--ink)}
+.q input[type=text]{font:18px "Courier New",monospace;padding:7px 10px;border:2px solid var(--blue);border-radius:8px;width:min(100%,260px)}
+.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.fb{font:700 15px "Trebuchet MS",sans-serif;margin-left:6px}
+.sol{display:none;margin-top:10px;padding:10px 14px;background:var(--yellow);border-radius:8px;font-size:16px}
+.sol.on{display:block}
+.final{display:none;text-align:center;margin:24px 0;padding:18px;background:#fff;border:3px dashed var(--red);border-radius:14px;font:700 20px "Trebuchet MS",sans-serif;color:var(--ink)}
+footer{margin-top:40px;padding-top:14px;border-top:3px double var(--ink);text-align:center;font:15px "Trebuchet MS",sans-serif;color:#445}
+@media(max-width:560px){body{font-size:17px}h2{margin-left:-8px}.bar{top:62px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<img src="data:image/jpeg;base64,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" alt="Logo Fransid" width="360">
+<h1>Les nombres positifs et négatifs</h1>
+<p class="meta">Mathématiques – collège (5<sup>e</sup> – 4<sup>e</sup>) et révisions</p>
+<p class="meta">Cours préparé par <b>Sid KHALIFA</b>, professeur de français</p>
+<span class="tag">Définitions, droite graduée, opérations</span>
+</header>
+
+<nav role="tablist" aria-label="Sections du site">
+<button role="tab" id="b1" aria-selected="true" aria-controls="t1">📖 Explication du cours</button>
+<button role="tab" id="b2" aria-selected="false" aria-controls="t2">✏️ Révision</button>
+</nav>
+
+<main>
+<section class="tab on" id="t1" role="tabpanel" aria-labelledby="b1">
+
+<h2><span>1</span>Qu'est-ce qu'un nombre relatif ?</h2>
+<div class="box def"><b>Définition</b><p>Un <mark>nombre relatif</mark> est un nombre muni d'un signe : <span class="m">+</span> pour les nombres positifs (+3 ; +12,5 ; +0,7), <span class="m">−</span> pour les nombres négatifs (−3 ; −12,5 ; −0,7).</p>
+<p>Les entiers relatifs (…, −2, −1, 0, +1, +2, …) forment l'ensemble noté ℤ. Avec les décimaux relatifs, on obtient l'ensemble des nombres décimaux relatifs.</p></div>
+<div class="box ret"><b>Le rôle du zéro</b><p>Zéro est à la fois positif et négatif : c'est le seul nombre qui est son propre opposé. Il n'a pas de signe « + » ou « − » en soi.</p></div>
+<h3>À quoi servent-ils ?</h3>
+<ul>
+<li><b>Températures :</b> −5 °C (5 degrés sous zéro)</li>
+<li><b>Altitudes :</b> la mer Morte est à −430 m, sous le niveau de la mer</li>
+<li><b>Comptes bancaires :</b> un solde de −50 € est un découvert</li>
+<li><b>Dates historiques :</b> −52 signifie 52 ans avant notre ère</li>
+<li><b>Étages :</b> −1 pour le sous-sol d'un immeuble</li>
+</ul>
+
+<h2><span>2</span>Vocabulaire essentiel</h2>
+<div class="wrap"><table><tr><th>Élément</th><th>Définition</th><th>Avec −7,5</th></tr>
+<tr><td>Le signe</td><td>+ ou −</td><td>− (négatif)</td></tr>
+<tr><td>La distance à zéro (partie numérique)</td><td>la « longueur » du nombre, sans son signe</td><td>7,5</td></tr></table></div>
+<div class="box def"><b>Nombres opposés</b><p>Deux nombres sont <mark>opposés</mark> s'ils ont la même distance à zéro mais des signes contraires : +4 et −4.</p>
+<ul><li>La somme de deux opposés est nulle : (+4) + (−4) = 0</li><li>Sur une droite graduée, ils sont symétriques par rapport à l'origine O.</li></ul></div>
+<div class="box att"><b>Attention</b><p>−(−5) = +5 : l'opposé de l'opposé d'un nombre est le nombre lui-même.</p></div>
+
+<h2><span>3</span>La droite graduée</h2>
+<p>L'origine O correspond à 0. On choisit une unité et un sens positif (en général vers la droite).</p>
+<div class="line" aria-label="Droite graduée de −4 à +4"><i class="neg">−4</i><i class="neg">−3</i><i class="neg">−2</i><i class="neg">−1</i><i class="o">0</i><i class="pos">+1</i><i class="pos">+2</i><i class="pos">+3</i><i class="pos">+4</i></div>
+<div class="box ret"><b>Règle d'or</b><p>À droite de 0 : nombres <span class="pos"><b>positifs</b></span>. À gauche de 0 : nombres <span class="neg"><b>négatifs</b></span>. −2,5 se place à mi-chemin entre −3 et −2.</p></div>
+
+<h2><span>4</span>Comparer des nombres relatifs</h2>
+<div class="box def"><b>Règles de comparaison</b><ul>
+<li>Tout nombre négatif est inférieur à tout nombre positif : −100 &lt; +1</li>
+<li>Deux positifs : le plus grand a la plus grande distance à zéro : +3 &lt; +8</li>
+<li>Deux négatifs : le plus grand a la plus <u>petite</u> distance à zéro : −3 &gt; −8 (car 3 &lt; 8)</li></ul></div>
+<p>Astuce : « moins 8 degrés, c'est plus froid que moins 3 degrés », donc −8 &lt; −3. Un nombre est plus grand qu'un autre s'il est situé plus à droite ; ranger dans l'ordre croissant, c'est lire de gauche à droite.</p>
+<div class="box ex"><b>Exemple</b><p>Ranger −7 ; +2 ; −3,5 ; 0 ; +0,5 ; −10 :<br><code>−10 &lt; −7 &lt; −3,5 &lt; 0 &lt; +0,5 &lt; +2</code></p>
+<p>Encadrement : −3 &lt; −2,4 &lt; −2.</p></div>
+
+<h2><span>5</span>La valeur absolue</h2>
+<div class="box def"><b>Définition</b><p>La <mark>valeur absolue</mark> d'un nombre est sa distance à zéro, toujours positive ou nulle. On la note |x|.</p>
+<p>|+5| = 5 ; |−5| = 5 ; |0| = 0</p></div>
+<ul><li>|a| = |−a| : un nombre et son opposé ont la même valeur absolue</li><li>|a| ≥ 0 toujours</li><li>Deux nombres ont la même valeur absolue si et seulement s'ils sont égaux ou opposés</li></ul>
+
+<h2><span>6</span>Addition</h2>
+<div class="box def"><b>Règle 1 : même signe</b><p>On additionne les distances à zéro et on garde le signe commun.</p></div>
+<p class="m">(+3) + (+8) = +11 &nbsp; (−3) + (−8) = −11 &nbsp; (−4,5) + (−2,5) = −7</p>
+<div class="box def"><b>Règle 2 : signes contraires</b><p>On calcule la différence des distances à zéro et on prend le signe du nombre qui a la plus grande distance à zéro.</p></div>
+<p class="m">(+7) + (−3) = +4 &nbsp; (+3) + (−7) = −4 &nbsp; (+5) + (−5) = 0</p>
+<div class="box ex"><b>Méthode : plusieurs nombres</b><p>On regroupe les positifs, puis les négatifs, puis on additionne les deux résultats.</p>
+<p>(−4) + (+7) + (−6) + (+3) : positifs +10 ; négatifs −10 ; total <b>0</b>.</p></div>
+
+<h2><span>7</span>Soustraction</h2>
+<div class="box ret"><b>Règle fondamentale</b><p>Soustraire un nombre, c'est <mark>ajouter son opposé</mark> : a − b = a + (opposé de b).</p></div>
+<ul class="m" style="list-style:none;padding:8px 12px;display:block;white-space:normal">
+<li>(+10) − (+3) = (+10) + (−3) = +7</li><li>(+10) − (−3) = (+10) + (+3) = +13</li><li>(−10) − (+3) = (−10) + (−3) = −13</li><li>(−10) − (−3) = (−10) + (+3) = −7</li></ul>
+<div class="box att"><b>Point le plus source d'erreurs</b><p>Deux signes « − » qui se suivent deviennent un « + » : a − (−b) = a + b.</p></div>
+<div class="box ex"><b>Distance entre deux points</b><p>AB = |x<sub>B</sub> − x<sub>A</sub>|. Avec A(−2) et B(+5) : AB = |5 − (−2)| = |7| = 7.</p></div>
+
+<h2><span>8</span>Multiplication</h2>
+<div class="wrap"><table><tr><th>1<sup>er</sup> facteur</th><th>2<sup>e</sup> facteur</th><th>Produit</th></tr><tr><td>+</td><td>+</td><td>+</td></tr><tr><td>−</td><td>−</td><td>+</td></tr><tr><td>+</td><td>−</td><td>−</td></tr><tr><td>−</td><td>+</td><td>−</td></tr></table></div>
+<p>Moyen mnémotechnique : les amis de mes amis sont mes amis (+ × + = +) ; les ennemis de mes ennemis sont mes amis (− × − = +) ; les amis de mes ennemis sont mes ennemis (+ × − = −).</p>
+<p class="m">(+4)×(+3) = +12 &nbsp; (−4)×(−3) = +12 &nbsp; (+4)×(−3) = −12 &nbsp; (−1,5)×(−2) = +3</p>
+<div class="box ret"><b>Plusieurs facteurs</b><p>On compte les facteurs négatifs : nombre <b>pair</b> → produit positif ; nombre <b>impair</b> → produit négatif.</p>
+<p>(−2)×(−3)×(−1)×(+4) : trois négatifs → négatif ; 2×3×1×4 = 24 ; résultat <b>−24</b>.</p></div>
+
+<h2><span>9</span>Division</h2>
+<p>La division suit exactement la même règle des signes que la multiplication.</p>
+<p class="m">(+12)÷(+3) = +4 &nbsp; (−12)÷(−3) = +4 &nbsp; (+12)÷(−3) = −4 &nbsp; (−12)÷(+3) = −4 &nbsp; (−7)÷(−2) = +3,5</p>
+<div class="box att"><b>Attention</b><p>On ne divise jamais par 0.</p></div>
+
+<h2><span>10</span>Priorités opératoires</h2>
+<div class="box def"><b>Ordre à respecter</b><ul><li>1. Les parenthèses et crochets, en commençant par les plus intérieurs</li><li>2. Les puissances</li><li>3. Les multiplications et divisions, de gauche à droite</li><li>4. Les additions et soustractions, de gauche à droite</li></ul></div>
+<div class="box ex"><b>Exemple A</b><p>A = (−5) + (−3) × (+4) = (−5) + (−12) = <b>−17</b></p></div>
+<div class="box ex"><b>Exemple B</b><p>B = [(−2) + (−6)] ÷ (+4) − (−3) = (−8) ÷ 4 − (−3) = −2 + 3 = <b>+1</b></p></div>
+<p>Écritures allégées : (+3) + (−5) s'écrit 3 − 5 ; 3 − (−5) s'écrit 3 + 5.</p>
+
+<h2><span>11</span>Puissances</h2>
+<div class="box def"><b>Définition</b><p>aⁿ = a × a × … × a (n facteurs), et a¹ = a.</p>
+<ul><li>Exposant pair → résultat toujours positif : (−2)⁴ = +16</li><li>Exposant impair → signe de la base : (−2)³ = −8</li></ul></div>
+<p class="m">(−3)² = +9 &nbsp; (−3)³ = −27 &nbsp; (−1)⁵ = −1 &nbsp; (−10)³ = −1000</p>
+<div class="box att"><b>Attention aux notations</b><p>−3² = −(3²) = <b>−9</b>, mais (−3)² = <b>+9</b> : ce n'est pas le même calcul.</p></div>
+
+<h2><span>12</span>Méthode et erreurs classiques</h2>
+<div class="box ret"><b>Check-list avant chaque calcul</b><ul><li>Repérer les signes (écrire les nombres entre parenthèses aide)</li><li>Transformer les soustractions en additions d'opposés</li><li>Appliquer la règle des signes pour × et ÷</li><li>Respecter les priorités opératoires</li><li>Vérifier : un produit de deux négatifs est positif, une somme de deux négatifs est négative</li></ul></div>
+<div class="wrap"><table><tr><th>Erreur fréquente</th><th>Correction</th></tr>
+<tr><td>−3 + (−5) = +8</td><td>−8 (même signe : on ajoute les distances)</td></tr>
+<tr><td>4 − (−2) = 2</td><td>4 + 2 = 6</td></tr>
+<tr><td>−5 − 3 = −2</td><td>−5 + (−3) = −8</td></tr>
+<tr><td>(−2)³ = +8</td><td>−8 (exposant impair)</td></tr>
+<tr><td>−2² = +4</td><td>−4</td></tr>
+<tr><td>−1 &lt; −8</td><td>−8 &lt; −1 (le plus loin de zéro est le plus petit)</td></tr></table></div>
+
+<h2><span>13</span>Résumé en un coup d'œil</h2>
+<div class="wrap"><table><tr><th>Opération</th><th>Règle</th><th>Exemple</th></tr>
+<tr><td>Addition, même signe</td><td>On garde le signe commun</td><td>(−2) + (−3) = −5</td></tr>
+<tr><td>Addition, signes contraires</td><td>Signe du plus « loin de zéro »</td><td>(+7) + (−3) = +4</td></tr>
+<tr><td>Soustraction</td><td>Ajouter l'opposé</td><td>5 − (−2) = 7</td></tr>
+<tr><td>Multiplication / division</td><td>Signes identiques → + ; différents → −</td><td>(−2) × (−3) = +6</td></tr>
+<tr><td>Puissance</td><td>Exposant pair → + ; impair → signe de la base</td><td>(−2)³ = −8</td></tr>
+<tr><td>Comparaison</td><td>Plus à droite = plus grand</td><td>−8 &lt; −3 &lt; 0 &lt; 3</td></tr></table></div>
+<p style="text-align:center;margin-top:28px"><button class="act" onclick="go(2)">Passer aux révisions : 20 questions</button></p>
+</section>
+
+<section class="tab" id="t2" role="tabpanel" aria-labelledby="b2">
+<h2><span>✏</span>Révision : 20 questions</h2>
+<p>Quatre séries : vrai/faux, QCM, compléter les vides et réponses courtes. Réponds, clique sur « Vérifier », puis sur « Voir la correction » pour lire l'explication.</p>
+<div class="bar"><span id="sc">Score : 0 / 20</span><div class="prog"><div id="pg"></div></div><button class="act alt" onclick="reset()">Recommencer</button></div>
+<div id="qs"></div>
+<div class="final" id="fin"></div>
+</section>
+</main>
+<footer>Cours préparé par <b>Sid KHALIFA</b>, professeur de français.</footer>
+</div>
+
+<script>
+const Q=[
+{t:'vf',s:'Série A : Vrai ou faux',q:'Zéro est à la fois positif et négatif.',a:true,e:'Vrai. Zéro est le seul nombre qui est son propre opposé : il est à la fois positif et négatif, sans signe « + » ou « − » en soi.'},
+{t:'vf',q:'−8 est plus grand que −3.',a:false,e:'Faux. Pour deux négatifs, le plus grand est celui qui a la plus petite distance à zéro. Comme 3 < 8, on a −3 > −8. Sur la droite graduée, −8 est plus à gauche.'},
+{t:'vf',q:'(−4) × (−3) = +12.',a:true,e:'Vrai. Deux facteurs de même signe donnent un produit positif : 4 × 3 = 12, donc +12.'},
+{t:'vf',q:'−3² est égal à +9.',a:false,e:'Faux. −3² = −(3²) = −9. Le signe − ne fait pas partie de la base. Seul (−3)² vaut +9.'},
+{t:'vf',q:'Soustraire un nombre, c\'est ajouter son opposé.',a:true,e:'Vrai. a − b = a + (opposé de b). Par exemple, 4 − (−2) = 4 + 2 = 6.'},
+{t:'qcm',s:'Série B : QCM',q:'(−8) + (−3) = ?',o:['−5','−11','+11','+5'],a:1,e:'Les deux nombres ont le même signe : on additionne les distances à zéro (8 + 3 = 11) et on garde le signe −. Résultat : −11.'},
+{t:'qcm',q:'(+8) − (−3) = ?',o:['+5','−5','+11','−11'],a:2,e:'On transforme la soustraction en addition de l\'opposé : (+8) + (+3) = +11.'},
+{t:'qcm',q:'Combien vaut (−2)³ ?',o:['+8','−8','+6','−6'],a:1,e:'(−2)³ = (−2) × (−2) × (−2). L\'exposant 3 est impair, donc le résultat est négatif : −8.'},
+{t:'qcm',q:'Quelle est la valeur absolue de −5 ?',o:['−5','0','5','−1/5'],a:2,e:'La valeur absolue est la distance à zéro, toujours positive ou nulle : |−5| = 5.'},
+{t:'qcm',q:'Quel est le résultat de (−2) × (−3) × (−1) × (+4) ?',o:['+24','−24','+10','−10'],a:1,e:'Il y a trois facteurs négatifs (nombre impair), donc le produit est négatif. 2 × 3 × 1 × 4 = 24, donc −24.'},
+{t:'fill',s:'Série C : Compléter les vides',q:'La somme de deux nombres opposés est égale à ___.',a:['0','zero'],ty:'txt',e:'Deux nombres opposés ont la même distance à zéro et des signes contraires, donc leur somme est nulle : (+4) + (−4) = 0.'},
+{t:'fill',q:'(−12) ÷ (−3) = ___',a:['4'],ty:'num',e:'Deux négatifs : le quotient est positif. 12 ÷ 3 = 4, donc +4.'},
+{t:'fill',q:'Tout nombre négatif est ___ à tout nombre positif.',a:['inferieur','inferieure','plus petit','plus petite'],ty:'txt',e:'Un nombre négatif est à gauche de 0 et un positif est à droite : −100 < +1. Le négatif est donc inférieur.'},
+{t:'fill',q:'4 − (−2) = ___',a:['6'],ty:'num',e:'On ajoute l\'opposé : 4 − (−2) = 4 + 2 = 6.'},
+{t:'fill',q:'(−1)⁴ = ___',a:['1'],ty:'num',e:'Exposant pair : le résultat est positif. (−1) × (−1) × (−1) × (−1) = +1.'},
+{t:'sh',s:'Série D : Réponses courtes',q:'Calcule (−6) × (+4).',a:['-24'],ty:'num',e:'Signes contraires : le produit est négatif. 6 × 4 = 24, donc −24.'},
+{t:'sh',q:'Quel est l\'opposé de −5 ?',a:['5'],ty:'num',e:'L\'opposé de −5 a la même distance à zéro mais le signe contraire : −(−5) = +5.'},
+{t:'sh',q:'Sur une droite graduée, A est au point −2 et B au point +5. Calcule la distance AB.',a:['7'],ty:'num',e:'AB = |x_B − x_A| = |5 − (−2)| = |5 + 2| = 7.'},
+{t:'sh',q:'Calcule (−24) ÷ (−0,5).',a:['48'],ty:'num',e:'Deux négatifs : le quotient est positif. 24 ÷ 0,5 = 48, donc +48.'},
+{t:'sh',q:'Un sous-marin est à −220 m. Il remonte de 90 m, puis redescend de 130 m. À quelle altitude se trouve-t-il (en m) ?',a:['-260'],ty:'num',e:'Après la remontée : −220 + 90 = −130. Après la descente : −130 + (−130) = −260. Il est à −260 m, soit 260 m sous le niveau de la mer.'}
+];
+const L={vf:'Vrai / Faux',qcm:'QCM',fill:'Compléter',sh:'Réponse courte'};
+let st=[];
+const $=s=>document.querySelector(s);
+const norm=(v,ty)=>{v=v.toLowerCase().replace(/[−–—]/g,'-').replace(/,/g,'.').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+return ty==='num'?v.replace(/[^0-9.\-]/g,''):v.replace(/\s+/g,' ')};
+function build(){st=Q.map(()=>({d:0,ok:0,sel:null}));let h='';
+Q.forEach((x,i)=>{if(x.s)h+=`<h3>${x.s}</h3>`;
+let ctl='';
+if(x.t==='vf')ctl=`<div class="opts"><button class="opt" aria-pressed="false" onclick="pick(${i},true,this)">Vrai</button><button class="opt" aria-pressed="false" onclick="pick(${i},false,this)">Faux</button></div>`;
+else if(x.t==='qcm')ctl=`<div class="opts">${x.o.map((o,j)=>`<button class="opt" aria-pressed="false" onclick="pick(${i},${j},this)">${o}</button>`).join('')}</div>`;
+else ctl=`<input type="text" id="in${i}" autocomplete="off" aria-label="Ta réponse" onkeydown="if(event.key==='Enter')chk(${i})">`;
+h+=`<div class="q" id="q${i}"><span class="n">Question ${i+1} · ${L[x.t]}</span><p>${x.q}</p>${ctl}<div class="row"><button class="act" onclick="chk(${i})">Vérifier</button><button class="act alt" onclick="sol(${i})">Voir la correction</button><span class="fb" id="fb${i}"></span></div><div class="sol" id="so${i}"><b>Correction :</b> ${x.e}</div></div>`});
+$('#qs').innerHTML=h;upd()}
+function pick(i,v,b){st[i].sel=v;b.parentNode.querySelectorAll('.opt').forEach(o=>o.setAttribute('aria-pressed',o===b))}
+function chk(i){const x=Q[i],s=st[i];let ok;
+if(x.t==='vf'||x.t==='qcm'){if(s.sel===null){$('#fb'+i).textContent='Choisis une réponse.';return}ok=s.sel===x.a}
+else{const v=norm($('#in'+i).value,x.ty);if(!v){$('#fb'+i).textContent='Écris une réponse.';return}ok=x.a.includes(v)}
+s.d=1;s.ok=ok;const q=$('#q'+i);q.className='q '+(ok?'ok':'ko');
+$('#fb'+i).textContent=ok?'✅ Bravo !':'❌ Pas tout à fait. Regarde la correction.';
+$('#fb'+i).style.color=ok?'var(--green)':'var(--red)';upd()}
+function sol(i){$('#so'+i).classList.toggle('on')}
+function upd(){const n=st.filter(s=>s.ok).length,d=st.filter(s=>s.d).length;
+$('#sc').textContent=`Score : ${n} / 20`;$('#pg').style.width=(d/20*100)+'%';
+const f=$('#fin');if(d===20){f.style.display='block';f.textContent=n>=18?`🏆 ${n}/20 : excellent !`:n>=12?`👍 ${n}/20 : bon travail, relis les corrections.`:`📚 ${n}/20 : relis le cours puis recommence.`}else f.style.display='none'}
+function reset(){build();window.scrollTo({top:0,behavior:'smooth'})}
+function go(n){[1,2].forEach(k=>{$('#t'+k).classList.toggle('on',k===n);$('#b'+k).setAttribute('aria-selected',k===n)});window.scrollTo({top:0,behavior:'smooth'})}
+$('#b1').onclick=()=>go(1);$('#b2').onclick=()=>go(2);
+build();
+</script>
+</body>
+</html>
